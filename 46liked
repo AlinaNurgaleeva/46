@@ -1,0 +1,23 @@
+numbers = [(2*x**2) for x in list(range(1, 1000))]
+normal = list(range(1, 10000000))
+
+#produces primes under n
+def primes(n):
+    sieve = [True] * n
+    for i in range(3, int(n**0.5) + 1, 2):
+        if sieve[i]:
+            sieve[i * i:: 2 * i] = [False] * int((n - i * i - 1)/(2 * i) + 1)
+    return [2] + [i for i in range(3, n, 2) if sieve[i]]
+
+primes = primes(1000)
+final = []
+
+#add the two lists in every way possible
+added = [x + y for x in numbers for y in primes]
+
+#if it does not appear in a normal number line send it to final 
+for x in added:
+    if x not in normal:
+        final.append(x)
+
+print(min(final))
