@@ -2,8 +2,6 @@ import time
 from math import sqrt
 start = time.time()
 def is_prime(n):
-    """function to check if the given
-    number is prime or not"""
     if n % 2 == 0:
         return False
     else:
